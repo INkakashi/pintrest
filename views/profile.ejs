@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animated Profile Card</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/stylesheets/profile.css">
+   
+</head>
+<body>
+
+  <!-- Profile Section -->
+  <div class="profile-card">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKsAAACUCAMAAADbGilTAAAAM1BMVEX////Z5v/y9fzS3/fV4/v2+f/c6P/8/f/5+//X5P/u9P/f6v/p8P/Y4/ji7P/x9v/g6PiXmyzRAAAFHUlEQVR4nO1c2bKjOgwMYGMw6/9/7cXhJifneFEjCzKuop+mpiaeLqGlLdl+PG7cuHHjxo0bN2RhjH7BmG+TicF0i53ntvpEO8926f4tykbbcWirvq/+Yvurdhit/lf46nEzp0/zg/Bm4FF/m6Yj2iZY/nKI79I1y5w06F/zzsu3fMHYGeb5wmy/wtYOh5k6DPZqomYZ8I//G/1wrSfo41//E/OFUWbR2I+hvcoRNPvz/6AfLjFttlF3XGHaUYSpw3gy007g+7/QD92ZVDUvp8ZwptPWMq76g7Y+jaowU4eTyNoTqFbVKelggf5rpVSzY/sT9ItFnirkAE+i07RumJ50kR+Ju4EGwmojOq3v7YrRji/AthXOBh2drDama/1bQZl6RdgK51mE6hT6mPWEkJWkOpLVqmliAW2bhvpxL1huyRQQMeoOxLRiyYB2VpWg6siSXMVcltwENE06lDXtBrMMVUs5a9NQKbImyfYi9aujMqtq6NAYSZdtJbyAEtdbXNH/TUfHl0AuAHIAUiTrK3IBHVgTtM50fnhpugpgUWHpipCrC8jUCpoVMWxmqaVFa7OCS60k10yPJb1VgS7gnICMriyP1aQpFFGyPtYCBFeOx9L6SgHJdUdHq4IcvUWWrI3rgDYozUDbNaN4LXSTRaGhtQUXzbXnRxfQZZHlyk9bHb22NNeK6wRI80KaK1MaGqTRriY4tug8sGHmzRKAfbZwzqrYmxm6EFSoInQAVKEDrxzQhcAB2BT8vxytByp2OcDmQoI66wmWJjBYYxgVBIgccGg5wQW5awWLQkAS7uA4LFBgn8AMi5qVV2ax0KqcYenPZmCzsoIL5orIbUBo53DFx0NUiwhqEr3BkS/4fIjsZgCdjB+0x6kaeHFHdk2R7dYDVKvqeNJCBOEH2YRlD1m14shCNL2+ycZ0AdSF/8TxBHuMq5tsjKGPZ0ZoFnMp153t38/XHWd6CVc3iJvW+n180HT1OoHjuMu5Vvs0blhHa+24Dtgk7mtcn/NY9RrHspheyPVFOOPX13LNw3GuaC1QOMAVj9cCpMY2xwGsytgY0KOiaYv4WuOot+xA5waGdiE04caUc7LZaDs1aWHM0YRJrd3AW+3AwklPEN8XpMbaNOrU9pvFNbE3RCaFKXQJsqy9YTzB5lJNk+XsuaO9DDXlH6bR0UYcq5cR7RHBU6IUomNE3twoElwKbWClETEss/cWdljVyJxNWSKG5flXuFeMN7LTMOGWPLNXHO7BZxSB3wj3Y5k9+PBsA+5jU6iDXLlxG5KFfXZufa8ejC726gGHlXLXyMyTf4QgUGYV0MAEuQaCK2PGGZgdn8s15+CTXw4EfcDnmnUG0i8HglwDsZUlNLwUKyFcdujJo5p36sk/m3Nmfs2s3l7aOrFu5R4v9s6SiekBz12zz5L5HisiX0MCNv8IrOexp+lXAa3pnSlVEh7re6vEql7xUirfAovX3RI5q+ufgZbYx3qBJXSHR7wgBOSg0NnywGYGP/EYQmA4K3fNxK9exKQwheAUUfBiVEBvNROLbbcGRnOSd0zCOwR3A8ouNY7FRm5Jid7die2/D7e1JffZUUTumh27LRv+19J3zc65xLnjhKuc2N3I4zjhbmRRd06Lustb1B3pou6eF3Wn/1HSWwmPot6gKOptj0dJb6Y8inqLpqg3fhyKeTvJoaA3qR4lvfX1RDFvqL3oFvI23RPlvPm3o5S3FD9QxBuVN27cuHHjxo1i8R+U7j+SykbRwAAAAABJRU5ErkJggg==" alt="Profile Picture">
+    <h3></h3>
+    <p><%=User.username%></p>
+    <div class="extra-info">
+      <p>Followers: ?</p>
+      <p>Following: ?</p>
+      <p>Joined: date</p>
+    </div>
+    <a href="/logout" class="button">logout</a>
+
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+      <input type="text" name="filecaption" placeholder="some caption">
+      <input type="file" name="file">
+      <button type="submit">upload</button>
+    </form>
+  </div>
+  <div class="card">
+    <% User.posts.forEach(function(post){ %>
+      <div class="card", style="width: 18rem;">
+        <img src="/images/uploads/<%= post.image %>"
+        class="card-img-top">
+        <div class="card-body">
+          <h5 class="card-title"><%= post.imageText %></h5>
+          <p class="card-text"></p>
+        </div>
+      </div>
+  </div>
+  <% }) %>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
